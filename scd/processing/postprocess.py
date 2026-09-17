@@ -3,14 +3,19 @@
 import pickle as pkl
 
 
-def save_results(output_datafile, dictionary_result):
+def save_results(output_datafile, dictionary_result, neural_data=None):
     """
     Save the dictionary_result to the output_datafile.
 
     Args:
-        output_datafile (str): The path to the output data file.
+        output_datafile (Path): The path to the output data file.
         dictionary_result (dict): The dictionary to be saved.
+        neural_data (optional): The neural data to be saved together with the dictionary.
     """
+
+    # Add neural data to dictionary, if any
+    if neural_data is not None:
+        dictionary_result["data"] = neural_data
 
     # Check if directory exists, create if not
     if not output_datafile.parent.exists():
