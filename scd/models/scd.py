@@ -42,6 +42,8 @@ class SwarmContrastiveDecomposition(torch.nn.Module):
     def _capture_preprocessing_config(self):
         """Snapshot the preprocessing parameters into decomp for later replay."""
         self.decomp["preprocessing_config"] = {
+            "start_time":             self.config.start_time,
+            "end_time":               self.config.end_time,
             "notch_params":           self.config.notch_params,
             "low_pass_cutoff":        self.config.low_pass_cutoff,
             "high_pass_cutoff":       self.config.high_pass_cutoff,
@@ -52,7 +54,7 @@ class SwarmContrastiveDecomposition(torch.nn.Module):
             "sampling_frequency":     self.config.sampling_frequency,
             "peel_off_window_size":   self.config.peel_off_window_size,
             "adapt_clamp":            self.config.adapt_clamp,
-            "edge_mask_size":         self.config.edge_mask_samples,
+            "edge_mask_size":         self.config.edge_mask_samples
         }
 
     def preprocess_emg(self, emg: torch.Tensor) -> torch.Tensor:
