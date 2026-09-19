@@ -109,8 +109,8 @@ neural_data = scd.preprocess_data(neural_data, config)
 # Train model
 dictionary, timestamps = scd.train_model(neural_data, config)
 
-# Save results
-scd.save_results("output.pkl", dictionary)
+# Save results (optionally, with neural data)
+scd.save_results("output.pkl", dictionary, neural_data=neural_data)
 ```
 
 ### Supported Data Formats
